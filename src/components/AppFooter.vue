@@ -16,8 +16,8 @@
         <div class="footer-column">
           <div class="footer-nav">
             <router-link to="/" @click.native="scrollToTop">Home</router-link>
-            <router-link to="/services" @click.native="scrollToTop">Services</router-link>
-            <router-link to="/events" @click.native="scrollToTop">Events</router-link>
+            <a href="#services" @click="scrollToSection('services')">Services</a>
+            <a href="#events" @click="scrollToSection('events')">Events</a>
             <!-- <router-link to="/articles" @click.native="scrollToTop">Articles</router-link> -->
             <router-link to="/contact" @click.native="scrollToTop">Contact Us</router-link>
           </div>
@@ -48,6 +48,21 @@ export default {
         top: 0,
         behavior: 'smooth'
       });
+    },
+    scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const offset = window.innerWidth < 781 ? 40 : 84;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = section.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition + offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
   }
 };

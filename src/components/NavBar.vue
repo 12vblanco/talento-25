@@ -33,7 +33,7 @@ export default {
     scrollToServices() {
       const servicesSection = document.getElementById('services');
       if (servicesSection) {
-        const offset = 84;
+        const offset = window.innerWidth < 781 ? 20 : 84;
         const bodyRect = document.body.getBoundingClientRect().top;
         const elementRect = servicesSection.getBoundingClientRect().top;
         const elementPosition = elementRect - bodyRect;
