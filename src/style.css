@@ -1,5 +1,26 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Fonts */
+  --primary-font: 'Poppins', sans-serif;
+  --secondary-font: 'Quicksand', sans-serif;
+
+  /* Colors */
+   --primary-color: #4856F6;
+  --secondary-color: aliceblue;
+  --tertiary-color: #FFA630;
+  --quaternary-color: #EF5B5B;
+  --background-color: #fff;
+  --text-color: #0B0A33;
+  --button-hover-color: #353FB4; 
+  /* Colors */
+  /*--primary-color: #4A90E2;
+  --secondary-color: #F5F7FA;
+  --tertiary-color: #FF6B6B;
+  --background-color: white;
+  --text-color: #2E3A4D;
+  --button-hover-color: #357ABD;*/
+
+  /* Other root styles */
+  font-family: var(--primary-font);
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,9 +34,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight: 700;
+  color: var(--text-color);
   text-decoration: inherit;
 }
 a:hover {
@@ -26,12 +53,19 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 100vw;
   min-height: 100vh;
+  background: var(--background-color);
+  overflow-x: hidden;
+  color: var(--text-color);
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3rem;
+  line-height: 1.1;
+}
+h2 {
+  font-size: 2.4rem;
   line-height: 1.1;
 }
 
@@ -42,12 +76,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--primary-color);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: var(--button-hover-color);
 }
 button:focus,
 button:focus-visible {
@@ -59,9 +93,7 @@ button:focus-visible {
 }
 
 #app {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
