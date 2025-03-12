@@ -43,18 +43,7 @@ export default {
       }
       this.closeMenu();
     },
-    navigateToEvents() {
-      if (this.$route.path !== '/') {
-        this.$router.push('/').then(() => {
-          nextTick(() => {
-            this.scrollToSection('events');
-          });
-        });
-      } else {
-        this.scrollToSection('events');
-      }
-      this.closeMenu();
-    },
+    
     scrollToSection(sectionId) {
       const section = document.getElementById(sectionId);
       if (section) {
