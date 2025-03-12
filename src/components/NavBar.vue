@@ -12,23 +12,37 @@
         <!-- <router-link to="/articles" @click.native="closeMenu">Articles</router-link> -->
         <router-link to="/contact" class="contact-btn" @click.native="closeMenu">Contact Us</router-link>
       </div>
-      <BurgerMenu @toggle-menu="toggleMenu" />
+      
+      <!-- Integrated BurgerMenu -->
+      <div class="burger-menu" @click="toggleMenu">
+        <div :class="{ 'burger-icon': true, 'open': isMenuOpen }"></div>
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
 import { nextTick } from 'vue';
-import BurgerMenu from './BurgerMenu.vue';
 
 export default {
-  components: {
-    BurgerMenu,
-  },
   data() {
     return {
       isMenuOpen: false,
     };
+  },
+  // Add watchers to properly handle body scroll locking
+  watch: {
+    isMenuOpen(newValue) {
+      if (newValue) {
+        // Menu is open, prevent scrolling
+        document.body.style.overflow = 'hidden';
+        document.body.style.height = '100%';
+      } else {
+        // Menu is closed, allow scrolling
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+      }
+    }
   },
   methods: {
     navigateToServices() {
@@ -59,19 +73,19 @@ export default {
         });
       }
     },
-    toggleMenu(isOpen) {
-      this.isMenuOpen = isOpen;
-      if (isOpen) {
-        document.body.classList.add('no-scroll');
-      } else {
-        document.body.classList.remove('no-scroll');
-      }
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
     },
     closeMenu() {
       this.isMenuOpen = false;
-      document.body.classList.remove('no-scroll');
-    },
+    }
   },
+  // Make sure to clean up when component is destroyed
+  beforeDestroy() {
+    // Ensure scroll is enabled when component is destroyed
+    document.body.style.overflow = '';
+    document.body.style.height = '';
+  }
 };
 </script>
 
@@ -150,6 +164,58 @@ export default {
   color: white !important;
 }
 
+/* Burger Menu Styles */
+.burger-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.burger-icon {
+  width: 30px;
+  height: 5px;
+  margin-left: 5px;
+  background-color: var(--text-color);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.burger-icon::before,
+.burger-icon::after {
+  content: '';
+  width: 31px;
+  height: 5px;
+  background-color: var(--text-color);
+  position: absolute;
+  transition: all 0.3s ease;
+  margin-left: -15px;
+}
+
+.burger-icon::before {
+  top: -10px;
+}
+
+.burger-icon::after {
+  top: 10px;
+}
+
+.burger-icon.open {
+  background-color: transparent;
+}
+
+.burger-icon.open::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.burger-icon.open::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
 @media (max-width: 780px) {
   .nav-links {
     display: none;
@@ -195,10 +261,5 @@ export default {
     max-height: none;
     opacity: 1;
   }
-}
-
-/* Add this to prevent scrolling when the menu is open */
-.no-scroll {
-  overflow: hidden;
 }
 </style>
