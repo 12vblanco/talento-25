@@ -16,8 +16,8 @@
         <div class="footer-column">
           <div class="footer-nav">
             <router-link to="/" @click.native="scrollToTop">Home</router-link>
-            <a href="#services" @click="scrollToSection('services')">Services</a>
-            <a href="#events" @click="scrollToSection('events')">Events</a>
+            <a href="#services" @click.prevent="navigateToServices">Services</a>
+            <a href="#events" @click.prevent="navigateToEvents">Events</a>
             <!-- <router-link to="/articles" @click.native="scrollToTop">Articles</router-link> -->
             <router-link to="/contact" @click.native="scrollToTop">Contact Us</router-link>
           </div>
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import { nextTick } from 'vue';
+
 export default {
   methods: {
     scrollToTop() {
@@ -49,6 +51,28 @@ export default {
         behavior: 'smooth'
       });
     },
+    navigateToServices() {
+      if (this.$route.path !== '/') {
+        this.$router.push('/').then(() => {
+          nextTick(() => {
+            this.scrollToSection('services-header');
+          });
+        });
+      } else {
+        this.scrollToSection('services-header');
+      }
+    },
+    navigateToEvents() {
+      if (this.$route.path !== '/') {
+        this.$router.push('/').then(() => {
+          nextTick(() => {
+            this.scrollToSection('events');
+          });
+        });
+      } else {
+        this.scrollToSection('events');
+      }
+    },
     scrollToSection(sectionId) {
       const section = document.getElementById(sectionId);
       if (section) {
@@ -56,7 +80,7 @@ export default {
         const bodyRect = document.body.getBoundingClientRect().top;
         const elementRect = section.getBoundingClientRect().top;
         const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition + offset;
+        const offsetPosition = elementPosition - offset;
 
         window.scrollTo({
           top: offsetPosition,

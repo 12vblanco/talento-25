@@ -7,8 +7,8 @@
       </router-link>
       <div class="nav-links" :class="{ 'open': isMenuOpen }">
         <router-link to="/" @click.native="closeMenu">Home</router-link>
-        <a href="#services" @click.prevent="scrollToServices">Services</a>
-        <router-link to="/events" @click.native="closeMenu">Events</router-link>
+        <a href="#services" @click.prevent="navigateToServices">Services</a>
+        <a href="#events" @click.prevent="navigateToEvents">Events</a>
         <!-- <router-link to="/articles" @click.native="closeMenu">Articles</router-link> -->
         <router-link to="/contact" class="contact-btn" @click.native="closeMenu">Contact Us</router-link>
       </div>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { nextTick } from 'vue';
 import BurgerMenu from './BurgerMenu.vue';
 
 export default {
@@ -30,21 +31,44 @@ export default {
     };
   },
   methods: {
-    scrollToServices() {
-      const servicesSection = document.getElementById('services');
-      if (servicesSection) {
-        const offset = window.innerWidth < 781 ? 20 : 84;
+    navigateToServices() {
+      if (this.$route.path !== '/') {
+        this.$router.push('/').then(() => {
+          nextTick(() => {
+            this.scrollToSection('services-header');
+          });
+        });
+      } else {
+        this.scrollToSection('services-header');
+      }
+      this.closeMenu();
+    },
+    navigateToEvents() {
+      if (this.$route.path !== '/') {
+        this.$router.push('/').then(() => {
+          nextTick(() => {
+            this.scrollToSection('events');
+          });
+        });
+      } else {
+        this.scrollToSection('events');
+      }
+      this.closeMenu();
+    },
+    scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const offset = window.innerWidth < 781 ? 40 : 84;
         const bodyRect = document.body.getBoundingClientRect().top;
-        const elementRect = servicesSection.getBoundingClientRect().top;
+        const elementRect = section.getBoundingClientRect().top;
         const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition + offset;
+        const offsetPosition = elementPosition - offset;
 
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth'
         });
       }
-      this.closeMenu();
     },
     toggleMenu(isOpen) {
       this.isMenuOpen = isOpen;
