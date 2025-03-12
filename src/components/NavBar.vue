@@ -8,7 +8,7 @@
       <div class="nav-links" :class="{ 'open': isMenuOpen }">
         <router-link to="/" @click.native="closeMenu">Home</router-link>
         <a href="#services" @click.prevent="navigateToServices">Services</a>
-        <a href="#events" @click.prevent="navigateToEvents">Events</a>
+        <a href="/events" @click.prevent="navigateToEvents">Events</a>
         <!-- <router-link to="/articles" @click.native="closeMenu">Articles</router-link> -->
         <router-link to="/contact" class="contact-btn" @click.native="closeMenu">Contact Us</router-link>
       </div>
