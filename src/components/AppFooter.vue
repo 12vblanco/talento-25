@@ -96,13 +96,14 @@ export default {
   max-width: 1340px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem 2rem 0 2rem;
+  padding: 4rem 2rem 0 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   margin: 2rem;
   background-color: var(--secondary-color);
   border-radius: 12px;
+  clip-path: polygon(50% 6%, 100% 0%, 100% 100%, 0 100%, 0 0);
 }
 
 .footer-top {
