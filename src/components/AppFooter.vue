@@ -17,7 +17,7 @@
           <div class="footer-nav">
             <router-link to="/" @click.native="scrollToTop">Home</router-link>
             <a href="#services" @click.prevent="navigateToServices">Services</a>
-            <a href="#events" @click.prevent="navigateToEvents">Events</a>
+            <router-link to="/events" @click.native="closeMenu">Events</router-link>
             <!-- <router-link to="/articles" @click.native="scrollToTop">Articles</router-link> -->
             <router-link to="/contact" @click.native="scrollToTop">Contact Us</router-link>
           </div>
@@ -62,17 +62,7 @@ export default {
         this.scrollToSection('services-header');
       }
     },
-    navigateToEvents() {
-      if (this.$route.path !== '/') {
-        this.$router.push('/').then(() => {
-          nextTick(() => {
-            this.scrollToSection('events');
-          });
-        });
-      } else {
-        this.scrollToSection('events');
-      }
-    },
+   
     scrollToSection(sectionId) {
       const section = document.getElementById(sectionId);
       if (section) {
