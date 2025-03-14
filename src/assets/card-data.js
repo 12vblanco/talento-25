@@ -1,9 +1,9 @@
-import img6 from "./card-img/Mask group-1.jpg";
-import img5 from "./card-img/Mask group-2.jpg";
-import img2 from "./card-img/Mask group-3.jpg";
-import img4 from "./card-img/Mask group-4.jpg";
-import img3 from "./card-img/Mask group-5.jpg";
-import img1 from "./card-img/Mask group.jpg";
+import img3 from "./card-img/competency.jpg";
+import img5 from "./card-img/engagement.jpg";
+import img2 from "./card-img/interview.jpg";
+import img1 from "./card-img/job-description.jpg";
+import img4 from "./card-img/performance.jpg";
+import img6 from "./card-img/training.jpg";
 
 export const cardData = [
   {

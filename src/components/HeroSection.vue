@@ -24,7 +24,7 @@
   <style scoped>
   .hero-wrapper {
     width: 100vw;
-    height: calc(100vh - 112px);
+    height: calc(100vh - 86.6px);
     position: relative;
     overflow: hidden;
   }
@@ -49,7 +49,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text readability */
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay for better text readability */
   }
   
   .hero-container {
