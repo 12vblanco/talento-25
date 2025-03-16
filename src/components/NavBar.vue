@@ -2,7 +2,7 @@
   <nav class="nav-wrapper">
     <div class="nav-container">
       <router-link to="/" class="logo-section" @click.native="closeMenu">
-        <h1 class="logo">Talento</h1>
+        <img src="../assets/logo-circ-blk.png" alt="Talento's logo" class="logo">
         <p class="subheader">Bespoke Talent Support</p>
       </router-link>
       <div class="nav-links" :class="{ 'open': isMenuOpen }">
@@ -109,8 +109,9 @@ export default {
 
 .logo-section {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  text-decoration: none;
 }
 
 .logo-section:hover {
@@ -118,9 +119,7 @@ export default {
 }
 
 .logo {
-  font-family: var(--secondary-font);
-  font-size: 3rem;
-  font-weight: bold;
+  max-width: 150px;
   margin-bottom: -.6rem;
 }
 
