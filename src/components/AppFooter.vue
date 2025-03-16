@@ -29,6 +29,10 @@
             <h2>Talento</h2>
             <p>Bespoke Talent Support</p>
           </div>
+          <div class="footer-logo-imgs">
+            <img src="../assets/logo-circ-blk.png" alt="Talento's logo" class="logo1">
+            <img src="../assets/t-circ-blk.png" alt="Talento's logo" class="logo2">
+          </div>
         </div>
       </div>
 
@@ -172,6 +176,15 @@ export default {
   text-align: center;
   font-size: 0.9rem;
   padding-bottom: 1rem;
+}
+
+.logo1 {
+  max-width: 100px;
+  margin-right: 1.4rem;
+}
+.logo2 {
+  max-width: 46px;
+  margin-bottom: 2px;
 }
 
 @media (max-width: 768px) {
