@@ -2,8 +2,8 @@
   <section id="services" class="services-wrapper">
     <!-- New Quote Div -->
     <div class="services-quote">
-      <p>“Every person is unique, put the right people with the right capability
-        to the right position to solve the right problems.” <br /> Pearl Zhu,
+      <p><i>“Every person is unique, put the right people with the right capability
+        to the right position to solve the right problems.”</i> <br />Pearl Zhu,
         Talent Master</p>
     </div>
     
@@ -65,10 +65,10 @@ export default {
 }
 
 .services-quote p {
-  max-width: 680px;
+  max-width: 720px;
   font-size: 14px;
   opacity: .8;
-  font-style: italic;
+  /* font-style: italic; */
   text-align: center;
   margin: 0 auto;
   padding: 0 2rem;
