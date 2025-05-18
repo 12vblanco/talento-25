@@ -1,5 +1,12 @@
 <template>
   <section id="services" class="services-wrapper">
+    <!-- New Quote Div -->
+    <div class="services-quote">
+      <p>“Every person is unique, put the right people with the right capability
+        to the right position to solve the right problems.” <br /> Pearl Zhu,
+        Talent Master</p>
+    </div>
+    
     <div class="services-container">
       <div id="services-header" class="services-header">
         <h2>Talento Services</h2>
@@ -43,9 +50,30 @@ export default {
 <style scoped>
 .services-wrapper {
   width: 100%;
-  padding: 8rem 0 4rem 0;
+  padding: 1rem 0 4rem 0;
   background-color: var(--background-color);
   color: var(--text-color);
+}
+
+/* New Quote Styles */
+.services-quote {
+  background-color: var(--background-color);
+  padding: 0 0 6rem 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.services-quote p {
+  max-width: 680px;
+  font-size: 14px;
+  opacity: .8;
+  font-style: italic;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 2rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
 .services-container {
@@ -171,7 +199,6 @@ a:hover {
   }
 
   .services-cards {
-    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
     padding: 1rem;
   }
 
@@ -182,6 +209,12 @@ a:hover {
 
   .services-container{
     padding: 0;
+  }
+  
+  /* Responsive quote styles */
+  .services-quote p {
+    font-size: 1rem;
+    padding: 0 1rem;
   }
 }
 </style>
